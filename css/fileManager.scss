@@ -1,0 +1,81 @@
+header{
+    .right{
+        a{  display: inline-block;
+            padding-top: 7%;
+            margin-left: 15px;
+            p{
+                display: inline-block;
+                margin-left: 5px;
+            }
+        }
+    }
+}
+.light{
+    .container{
+        .table{
+            background-color: #fff;
+            margin-top: 2.5%;
+            thead{
+                tr{
+                    th{
+                        i{
+                            font-size: 10px;
+                            color: rgb(112, 112, 112);
+                        }
+                        i:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    th{
+                        a{
+                            color: #0095BD;
+                        }
+                    }
+                    td{
+                        ul{
+                            li{
+                                display: inline;
+                                button{
+                                    border: 0.5px rgb(131, 131, 131) solid;
+                                    i{
+                                        font-size: 15px;
+                                        width: 25px;
+                                        height: 25px;
+                                        text-align: center;
+                                    }
+                                    i:after {
+                                        display: inline-block;
+                                        vertical-align: middle;
+                                        content: "";
+                                        height: 100%;
+                                    }
+                                    #green{
+                                        color: green;
+                                    }
+                                    #red{
+                                        color: red;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.bg-white{
+    padding: 2%;
+    .left{
+        i{
+            font-size: 25px;margin-right: 5px;
+        }
+        h3{
+            display: inline-block;
+        }
+    }
+}

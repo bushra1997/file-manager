@@ -1,0 +1,31 @@
+section .container {
+  margin: 3% auto;
+  background-color: #f8f8f8;
+}
+
+section .container .info {
+  background-color: #408eff;
+  color: white;
+  padding: 5% 10px 50px 50px;
+}
+
+section .container .info p {
+  font-size: 20px;
+}
+
+section .container .form {
+  padding: 50px 0px 0px 50px;
+}
+
+section .container .form .label, section .container .form .input {
+  display: block;
+}
+
+section .container .form .input {
+  margin: 10px 0px;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid #a79d9d;
+  background-color: transparent;
+}
+/*# sourceMappingURL=formStyle.css.map */

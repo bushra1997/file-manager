@@ -1,0 +1,72 @@
+header .right a {
+  display: inline-block;
+  padding-top: 7%;
+  margin-left: 15px;
+}
+
+header .right a p {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.light .container .table {
+  background-color: #fff;
+  margin-top: 2.5%;
+}
+
+.light .container .table thead tr th i {
+  font-size: 10px;
+  color: #707070;
+}
+
+.light .container .table thead tr th i:hover {
+  cursor: pointer;
+}
+
+.light .container .table tbody tr th a {
+  color: #0095BD;
+}
+
+.light .container .table tbody tr td ul li {
+  display: inline;
+}
+
+.light .container .table tbody tr td ul li button {
+  border: 0.5px #838383 solid;
+}
+
+.light .container .table tbody tr td ul li button i {
+  font-size: 15px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.light .container .table tbody tr td ul li button i:after {
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+  height: 100%;
+}
+
+.light .container .table tbody tr td ul li button #green {
+  color: green;
+}
+
+.light .container .table tbody tr td ul li button #red {
+  color: red;
+}
+
+.bg-white {
+  padding: 2%;
+}
+
+.bg-white .left i {
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.bg-white .left h3 {
+  display: inline-block;
+}
+/*# sourceMappingURL=fileManager.css.map */

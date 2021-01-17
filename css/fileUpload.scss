@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    line-height: 1.5;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+p, a{
+    color: #fff;
+}
+small{
+    color: #e20000;
+    font-weight: 800;
+}
+h6{
+    margin:4% 10px 0px 0px ;font-weight:600;
+}
+h4{
+    padding-top: 5%;
+    color: #fff;
+}
+.button{
+    float: right;
+}
+
