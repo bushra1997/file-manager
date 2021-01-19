@@ -1,5 +1,16 @@
 $(document).ready (function(){
-            
+    load_folder_list();
+    function load_folder_list (){
+        var action = "fetch";
+        $.ajax({
+            url:"action.php",
+            method:"POST",
+            data:{action:action},
+            success:function(data){
+                $('#folder_table').html(data); 
+            }
+        });
+    }
     $(document).on('click', '#create_folder', function(){
         $('#action').val("create");/* value to be sent to the server*/
         $('#folder_name').val('');  /* value entered by user */
@@ -19,8 +30,8 @@ $(document).ready (function(){
                 method:"POST",
                 data:{folder_name:folder_name, old_name:old_name, action:action}, /* values to be send to server */
                 success:function(data){
-                // if success execte the load folder list function to print out the new folder to table
-                alert(data);
+                    // if success execte the load folder list function to print out the new folder to table
+                    load_folder_list();
                 }
             });
         } else {
@@ -28,30 +39,19 @@ $(document).ready (function(){
         }
     });
     
-    $(".delete").on("click", function(){
-        var folder_name = $(this).attr("data-name");
+    $(document).on("click", ".delete", function(){
+        var folder_name = $(this).data("name");
         var action = "delete";
-        console.log(folder_name);
-        if(confirm("Are you sure you want to delete this folder/file?")){
+        if(confirm("Are you sure you want to remove it?")){
             $.ajax({
                 url:"action.php",
                 method:"POST",
                 data:{folder_name:folder_name, action:action},
-                success:function(data){
+                success:function(data)
+                {
+                load_folder_list();
                 }
             });
         }
     });
-    // $(document).on('click', '.view_files', function(){
-    //     var folder_name = $(this).data("file");
-    //     var action = "fetch_files";
-    //     $.ajax ({
-    //         url:"openDir.php",
-    //         method:"POST",
-    //         data:{action:action, folder_name:folder_name},
-    //         success:function(data){
-    //             $('#file_list').html(data);
-    //         }
-    //     });
-    // });
 });

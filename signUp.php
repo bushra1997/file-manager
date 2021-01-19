@@ -3,6 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function getData() {
         $_SERVER['QUERY_STRING'] = http_build_query("?users");
+        $_GET['path'] = "?users";
         $user= $_POST['username'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
