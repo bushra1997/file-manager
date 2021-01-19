@@ -2,7 +2,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function getData() {
-        $_GET['path'] = "?users";
+        $_SERVER['QUERY_STRING'] = http_build_query("?users");
         $user= $_POST['username'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
@@ -20,8 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'Email' => $email,
             'Password' => $password
     ];
-    
-        mkdir('/var/www/html/test5/users/'.$user,0777);
+        if(!file_exists('/var/www/html/test5/users/'.$user)) {
+            mkdir('/var/www/html/test5/users/'.$user,0777, true);
+            chmod('/var/www/html/test5/users/'.$user, 0777);
+        }
         $data[] = $userData;
         return json_encode($data);    
     }
