@@ -42,12 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 </tr>
             ';
             } elseif (is_dir($root_path . '/' . $file)){
-                $output .= '<tr><th><i style="margin-right:5px" class="far fa-folder-open"></i><a href =" ">'.basename($file).'</a></th>
+                $output .= '<tr><th><i style="margin-right:5px" class="far fa-folder-open"></i><a href="'.$home."?".$query. $file.'">'.basename($file).'</a></th>
                             <td>Folder</td>';
                 $output .= '<td>'. date("d M Y H:i:s", filemtime($root_path . "/" . $file))  .'</td>
                     <td>
                         <ul>
-                            <li><button type="button" name="view_files" data-name="'.$file.'" class="view_files"><a><i class="far fa-eye" id="green"></i></a></button></li>
+                            <li><button type="button" name="view_files" data-name="'.$file.'" class="view_files" data-toggle="modal" data-target="#filelistModal"><a><i class="far fa-eye" id="green"></i></a></button></li>
                             <li><button type="button" name="delete" data-name="'.$file.'" class="delete"><i class="fas fa-trash-alt" id="red"></i></button></li>
                         </ul>
                     </td>
@@ -74,11 +74,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     
     // delete folder
     if($_POST["action"] == "delete"){
-        $root_path = $_SERVER['DOCUMENT_ROOT'] . "/test5" . "/users" . '/'.$_SESSION['user'];
         $folderName = $_POST["folder_name"];
         $files = array_diff(scandir($root_path.'/'.$folderName), array('.', '..'));
-        foreach($files as $name)
-        {
+        foreach($files as $name){
            unlink(realpath($folderName) . '/' . $name);
         }
         rmdir($root_path.'/'.$folderName);
@@ -88,5 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $folderName = $_POST["folder_name"];
         unlink($root_path . '/' . $folderName);
     } 
+     
+
+    
 }
     

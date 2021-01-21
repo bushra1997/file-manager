@@ -7,6 +7,7 @@
         $file_Namee = $_FILES ['uploaded']['name'];
         move_uploaded_file($file_Uploaded_temp,  $root_path .'/'. $file_Namee);
     }
+    echo $_SERVER['QUERY_STRING'];
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +55,7 @@
                         <h5 class="modal-title" ><span id="change_title">Create Folder</span></h5>
                     </div>
                     <div class="modal-body">
-                        <p style="color:black;">Enter Folder Name</p>
+                        <p style="color:black;">Enter Folder Name</p> 
                         <input type="text" name="folder_name" id="folder_name" class="form-control" />
                         <br>
                         <input type="hidden" name="action" id="action" />
@@ -64,24 +65,7 @@
                 </div>
             </div>
         </div>
-        <div id="uploadModal" class="modal fade text-left" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" style="display:block">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h5 class="modal-title">Upload File</h5>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" id="upload_form" enctype='multipart/form-data'>
-                        <input type="file" name="upload_file" style="margin-bottom: 15px;"/>
-                        <br />
-                        <input type="hidden" name="hidden_folder_name" id="hidden_folder_name" />
-                        <input type="submit" name="upload_button" class="btn btn-info" value="Upload" />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div id="uploadModal2" class="modal fade text-left" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -106,6 +90,7 @@
                 </div>
             </div>
         </section>
+
         <div id="filelistModal" class="modal fade text-left" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">

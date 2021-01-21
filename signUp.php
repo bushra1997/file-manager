@@ -2,7 +2,6 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function getData() {
-        $_SERVER['QUERY_STRING'] = http_build_query("?users");
         $_GET['path'] = "?users";
         $user= $_POST['username'];
         $phone = $_POST['phone'];
@@ -12,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
         $_SESSION['user'] = $user;
         $_SESSION['password'] = $password;
+
+        $_SERVER['QUERY_STRING'] = http_build_query("?users"); 
 
         $jsonData = file_get_contents('data.json');
         $data = json_decode($jsonData);

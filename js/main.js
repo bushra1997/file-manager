@@ -69,4 +69,35 @@ $(document).ready (function(){
             });
         }
     });
+
+    $(document).on('click', '.view_files', function(){
+        var folder_name = $(this).data("name");
+        var action = "fetch_files";
+        $.ajax({
+        url:"action.php",
+        method:"POST",
+        data:{action:action, folder_name:folder_name},
+        success:function(data){
+            $('#file_list').html(data);
+        }
+        });
+    });
+    
+    $(document).on('click', '.remove_file', function(){
+        var path = $(this).attr("id");
+        var action = "remove_file";
+        if(confirm("Are you sure you want to remove this file?")){
+        $.ajax({
+            url:"action.php",
+            method:"POST",
+            data:{path:path, action:action},
+            success:function(data)
+            {
+            alert(data);
+            $('#filelistModal').modal('hide');
+            load_folder_list();
+            }
+        });
+        }
+    });
 });
