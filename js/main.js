@@ -5,7 +5,7 @@ $(document).ready (function(){
         $.ajax({
             url:"action.php",
             method:"POST",
-            data:{action:action},
+            data:{action:action,urls:window.location.search.substring(1)},
             success:function(data){
                 $('#folder_table').html(data); 
             }
@@ -28,7 +28,7 @@ $(document).ready (function(){
             $.ajax({
                 url:"action.php",
                 method:"POST",
-                data:{folder_name:folder_name, old_name:old_name, action:action}, /* values to be send to server */
+                data:{folder_name:folder_name, old_name:old_name, action:action,urls:window.location.search.substring(1)}, /* values to be send to server */
                 success:function(data){
                     // if success execte the load folder list function to print out the new folder to table
                     load_folder_list();
@@ -46,7 +46,7 @@ $(document).ready (function(){
             $.ajax({
                 url:"action.php",
                 method:"POST",
-                data:{folder_name:folder_name, action:action},
+                data:{folder_name:folder_name, action:action ,urls:window.location.search.substring(1)},
                 success:function(data)
                 {
                     load_folder_list();
@@ -61,7 +61,7 @@ $(document).ready (function(){
             $.ajax({
                 url:"action.php",
                 method:"POST",
-                data:{folder_name:folder_name, action:action},
+                data:{folder_name:folder_name, action:action,urls:window.location.search.substring(1)},
                 success:function(data)
                 {
                     load_folder_list();
@@ -69,35 +69,18 @@ $(document).ready (function(){
             });
         }
     });
-
-    $(document).on('click', '.view_files', function(){
+    $(document).on("click", ".open_file", function(){
         var folder_name = $(this).data("name");
-        var action = "fetch_files";
-        $.ajax({
-        url:"action.php",
-        method:"POST",
-        data:{action:action, folder_name:folder_name},
-        success:function(data){
-            $('#file_list').html(data);
-        }
-        });
+        var action = "view";
+            $.ajax({
+                url:"action.php",
+                method:"POST",
+                data:{folder_name:folder_name, action:action,urls:window.location.search.substring(1)},
+                success:function(data)
+                {
+                    load_folder_list();
+                }
+            });
     });
-    
-    $(document).on('click', '.remove_file', function(){
-        var path = $(this).attr("id");
-        var action = "remove_file";
-        if(confirm("Are you sure you want to remove this file?")){
-        $.ajax({
-            url:"action.php",
-            method:"POST",
-            data:{path:path, action:action},
-            success:function(data)
-            {
-            alert(data);
-            $('#filelistModal').modal('hide');
-            load_folder_list();
-            }
-        });
-        }
-    });
+
 });

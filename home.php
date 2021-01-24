@@ -1,13 +1,12 @@
 <?php
     session_start();
-    $root_path = $_SERVER['DOCUMENT_ROOT'] . "/test5" . "/users" . '/'.$_SESSION['user'];
+    $root_path = $_SERVER['DOCUMENT_ROOT'] . "/test5" .'/'.$_SERVER["QUERY_STRING"];
     if (isset($_FILES ['uploaded'])) {
         $file_Uploaded = $_FILES ['uploaded'];
         $file_Uploaded_temp =  $_FILES ['uploaded']['tmp_name'];
         $file_Namee = $_FILES ['uploaded']['name'];
         move_uploaded_file($file_Uploaded_temp,  $root_path .'/'. $file_Namee);
     }
-    echo $_SERVER['QUERY_STRING'];
 ?>
 
 <!DOCTYPE html>
@@ -90,21 +89,6 @@
                 </div>
             </div>
         </section>
-
-        <div id="filelistModal" class="modal fade text-left" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" style="display:block">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h5 class="modal-title">File List</h5>
-                    </div>
-                    <div class="modal-body" id="file_list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <footer class="bg-dark d-flex justify-content-center">
             <div>
                 <p>Crafted at training in Sprintive</p>

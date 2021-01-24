@@ -2,7 +2,6 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function getData() {
-        $_GET['path'] = "?users";
         $user= $_POST['username'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
@@ -12,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user'] = $user;
         $_SESSION['password'] = $password;
 
-        $_SERVER['QUERY_STRING'] = http_build_query("?users"); 
+        $_SERVER['QUERY_STRING'] = "?users".'/'.$_SESSION['user']; 
 
         $jsonData = file_get_contents('data.json');
         $data = json_decode($jsonData);
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         return json_encode($data);    
     }
     if (file_put_contents('data.json', getData(), true)) {
-        header('Location: home.php'.$_GET["path"].'/'.$_SESSION['user']);
+        header('Location: home.php'.$_SERVER['QUERY_STRING']);
         exit();
     } else {
         echo "ERROR!";

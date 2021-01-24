@@ -2,7 +2,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = $_POST['username'];
         $password = $_POST['password'];
-        $_GET['path'] = "?users";
+        $_SERVER['QUERY_STRING'] = "?users".'/'.$_POST['username']; 
         if (file_exists('data.json')) {
             $jsonData = file_get_contents('data.json');
             $data = json_decode($jsonData, true);
@@ -11,7 +11,7 @@
                     session_start();
                     $_SESSION['user'] = $user;
                     $_SESSION['password'] = $password;
-                    header('Location: home.php'.$_GET["path"].'/'.$_SESSION['user']);
+                    header('Location: home.php'.$_SERVER['QUERY_STRING']);
                     exit();
                 } else {
                     echo '
