@@ -2,6 +2,7 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $root_path = $_SERVER['DOCUMENT_ROOT'] . "/test5" .'/'.$_POST["urls"];
+    $path =  "/test5" .'/'.$_POST["urls"];
     $folder_file = scandir($root_path);
     $folder_file = array_diff ($folder_file, array('.','..'));
     $home ="/test5/home.php";
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $output .= '<td>'. date("d M Y H:i:s", filemtime($root_path . "/" . $file))  .'</td>
                         <td>
                             <ul>
-                                <li><button type="button" name="open_file" data-name="'.$file.'" class="open_file"><a href = "'. '/test5'. '/users'. '/'. $_SESSION['user']. '/' . $file . '" target = '.'_blank'.'><i class="far fa-eye" id="green"></i></a></button></li>
+                                <li><button type="button" name="open_file" data-name="'.$file.'" class="open_file"><a href = "'. $path. '/' . $file . '" target = '.'_blank'.'><i class="far fa-eye" id="green"></i></a></button></li>
                                 <li><button type="button" name="remove" data-name="'.$file.'" class="remove"><i class="fas fa-trash-alt" id="red"></i></button></li>
                             </ul>
                         </td>
